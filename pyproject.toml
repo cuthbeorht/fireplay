@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fireplay"
+version = "0.0.1"
+authors = [
+    {name="David Sciacchettano", email="david.sciacchettano@gmail.com"}
+]
+description = "App to play music from a multitude of sources"
+dependencies= [
+    "python-magic==0.4.27",
+    "mutagen==1.46.0"
+]
+
+
+[project.scripts]
+fp = "fireplay:main"
