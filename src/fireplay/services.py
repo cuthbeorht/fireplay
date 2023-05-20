@@ -34,7 +34,7 @@ def configure_logging():
         mode="a"
     )
     formatter = logging.Formatter(
-        '%(asctime)s program_name [%(process)d]: %(message)s',
+        '%(asctime)s fireplay [%(process)d]: %(message)s',
         '%b %d %H:%M:%S')
     formatter.converter = time.gmtime  # if you want UTC time
     log_handler.setFormatter(formatter)
