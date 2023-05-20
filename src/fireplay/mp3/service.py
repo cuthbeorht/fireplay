@@ -1,3 +1,4 @@
+import logging
 import os
 import sqlite3
 from typing import Any
@@ -23,9 +24,11 @@ class Mp3:
         for root, dirs, files in os.walk(search_path):
 
             for individual_file in files:
+                logging.debug(f"Found file {individual_file}")
                 full_file_and_path = os.path.join(root,individual_file)
 
                 if magic.from_file(full_file_and_path, mime=True) == "audio/mpeg":
+                    logging.debug(f"File is audio media")
                     self._store_media_file(os.stat(full_file_and_path), full_file_and_path, individual_file)
                     self._conn.commit()
 

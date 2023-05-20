@@ -1,5 +1,5 @@
 import sqlite3
-
+import logging
 
 def init_tables(cursor):
 
@@ -21,3 +21,12 @@ def cursor() -> (sqlite3.Connection, sqlite3.Cursor):
     conn.commit()
 
     return (conn, cursor)
+
+def configure_logging():
+    logging.basicConfig(
+        filename="logs/stdout.log",
+        filemode="a",
+        format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
+        datefmt="%H:%M:%S",
+        level=logging.DEBUG
+    )
