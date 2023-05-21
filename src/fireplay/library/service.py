@@ -10,7 +10,7 @@ from fireplay.services import cursor
 from magic import from_file
 import magic
 
-class Mp3:
+class MediaLibrary:
 
     def __init__(self, db: sqlite3.Cursor, conn: sqlite3.Connection):
         """
