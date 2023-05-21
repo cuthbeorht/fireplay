@@ -14,6 +14,10 @@ dependencies= [
     "mutagen==1.46.0"
 ]
 
+[project.optional-dependencies]
+test = [
+    "pytest"
+]
 
 [project.scripts]
 fp = "fireplay:main"
