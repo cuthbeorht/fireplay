@@ -25,7 +25,7 @@ class MediaLibraryRepository:
         except sqlite3.OperationalError as e:
             logging.error(f"Error creating tables: {e}")
 
-    def add(self, media_item: MediaLibraryItem) -> MediaLibraryItem:
+    async def add(self, media_item: MediaLibraryItem) -> MediaLibraryItem:
         """
 
         :param media_item:
@@ -39,7 +39,7 @@ class MediaLibraryRepository:
 
         return media_item
 
-    def find(self, media_item: MediaLibraryItem) -> List[MediaLibraryItem]:
+    async def find(self, media_item: MediaLibraryItem) -> List[MediaLibraryItem]:
         return (
             self._connection.cursor()
             .execute(
