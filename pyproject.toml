@@ -18,6 +18,10 @@ dependencies= [
 test = [
     "pytest"
 ]
+dev = [
+    "black",
+    "isort"
+]
 
 [project.scripts]
 fp = "fireplay:main"

@@ -2,7 +2,7 @@
 import logging
 
 from fireplay.library.service import MediaLibrary
-from fireplay.services import init_tables, cursor, configure_logging
+from fireplay.services import configure_logging, cursor, init_tables
 
 
 def main():
