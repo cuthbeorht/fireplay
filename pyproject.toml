@@ -17,15 +17,19 @@ dependencies= [
 
 [project.optional-dependencies]
 test = [
-    "pytest"
+    "pytest",
+    "pytest-asyncio"
 ]
 dev = [
     "black",
     "isort"
 ]
 
-[tool.coverage.run]
-source = ["src"]
+[tool.pytest.ini_options]
+#testpaths = [
+#    "test"
+#]
+asyncio_mode = "auto"
 
 [project.scripts]
 fp = "fireplay:main"

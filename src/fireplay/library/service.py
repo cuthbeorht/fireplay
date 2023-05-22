@@ -18,7 +18,7 @@ class MediaLibrary:
         """
         self._repository = repository
 
-    def build_music_list(self, search_path: str):
+    async def build_music_list(self, search_path: str) -> None:
         for root, dirs, files in os.walk(search_path):
             for individual_file in files:
                 logging.debug(f"Found file {individual_file}")
@@ -33,16 +33,6 @@ class MediaLibrary:
                         media_type=magic.from_file(full_file_and_path, mime=True),
                         full_file_and_path=full_file_and_path,
                     )
-                    found_media = self._repository.find(media_item=media_item)
-                    if found_media:
-                        self._repository.add(media_item)
-
-    def _store_media_file(self, file_stats: str, full_file_and_path, file_name):
-        media_tags = mutagen.File(full_file_and_path)
-
-        found_song = self._repository.find()
-
-        if len(found_song) > 0:
-            self._db.execute(
-                f'INSERT INTO main.medias (title, file_name, size, media_type) VALUES ("{file_name}", "{file_name}", {file_stats.st_size}, \'audio/mpeg\');'
-            )
+                    found_media = await self._repository.find(media_item=media_item)
+                    if len(found_media) == 0:
+                        await self._repository.add(media_item)
