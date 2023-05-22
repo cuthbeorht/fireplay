@@ -35,6 +35,7 @@ class MediaLibraryRepository:
         self._connection.cursor().execute(
             f'INSERT INTO main.medias (title, file_name, size, media_type) VALUES ("{media_item.file_name}", "{media_item.file_name}", {media_item.size}, \'audio/mpeg\');'
         )
+        self._connection.commit()
         media_item.id = self._connection.cursor().lastrowid
 
         return media_item
