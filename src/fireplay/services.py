@@ -3,8 +3,8 @@ import sqlite3
 import time
 from logging.handlers import RotatingFileHandler
 
-from fireplay import MediaLibrary
 from fireplay.library.repository import MediaLibraryRepository
+from fireplay.library.service import MediaLibrary
 
 
 def db_connection() -> sqlite3.Connection:
