@@ -26,9 +26,9 @@ dev = [
 ]
 
 [tool.pytest.ini_options]
-#testpaths = [
-#    "test"
-#]
+testpaths = [
+    "test"
+]
 asyncio_mode = "auto"
 
 [project.scripts]
