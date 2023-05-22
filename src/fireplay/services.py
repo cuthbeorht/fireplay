@@ -3,26 +3,25 @@ import sqlite3
 import time
 from logging.handlers import RotatingFileHandler
 
-
-def init_tables(cursor):
-    try:
-        cursor.execute(
-            "CREATE TABLE IF NOT EXISTS main.medias (title TEXT, file_name TEXT, size INT, media_type TEXT);"
-        )
-
-    except sqlite3.OperationalError as e:
-        if not "table medias already exists" == e.args[0]:
-            raise e
+from fireplay import MediaLibrary
+from fireplay.library.repository import MediaLibraryRepository
 
 
-def cursor() -> (sqlite3.Connection, sqlite3.Cursor):
-    conn = sqlite3.connect("media.db")
-    cursor = conn.cursor()
+def db_connection() -> sqlite3.Connection:
+    return sqlite3.connect("media.db")
 
-    init_tables(cursor)
-    conn.commit()
 
-    return (conn, cursor)
+def media_library_repository(
+    connection: sqlite3.Connection = db_connection(),
+) -> MediaLibraryRepository:
+    MediaLibraryRepository.init_tables(connection)
+    return MediaLibraryRepository(connection=connection)
+
+
+def media_libary_service(
+    repository: MediaLibraryRepository = media_library_repository(),
+) -> MediaLibrary:
+    return MediaLibrary(repository=repository)
 
 
 def configure_logging():
