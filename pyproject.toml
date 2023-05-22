@@ -11,13 +11,22 @@ authors = [
 description = "App to play music from a multitude of sources"
 dependencies= [
     "python-magic==0.4.27",
-    "mutagen==1.46.0"
+    "mutagen==1.46.0",
+    "pydantic==1.10.7"
 ]
 
 [project.optional-dependencies]
 test = [
     "pytest"
 ]
+dev = [
+    "black",
+    "isort"
+]
+
+[tool.coverage.run]
+source = ["src"]
 
 [project.scripts]
 fp = "fireplay:main"
+fp-test = "pytest:test"
