@@ -38,8 +38,9 @@ def test_create_instance_media_library(
 
 @pytest.mark.asyncio
 async def test_given_valid_audio_file_expect_call_to_database(
-    valid_sample_media_file: Path, media_library: MediaLibrary
+    valid_sample_media_files_path: Path, media_library: MediaLibrary
 ):
-    await media_library.build_music_list(str(valid_sample_media_file))
+    await media_library.build_music_list(str(valid_sample_media_files_path))
 
     media_library._repository.find.assert_called_once()
+    media_library._repository.add.assert_called_once()
