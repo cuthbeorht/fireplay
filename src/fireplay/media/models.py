@@ -9,6 +9,7 @@ from pathlib import Path
 
 # Taken from the Wikipedia definition of an MP3 file
 # https://en.wikipedia.org/wiki/MP3#/media/File:Mp3filestructure.svg
+# https://gist.github.com/nrk/2286511 => FFProbe command example
 class MediaProperties:
     """
 
