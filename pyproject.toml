@@ -12,7 +12,8 @@ description = "App to play music from a multitude of sources"
 dependencies= [
     "python-magic==0.4.27",
     "mutagen==1.46.0",
-    "pydantic==1.10.7"
+    "pydantic==1.10.7",
+    "ffmpeg-python==0.2.0"
 ]
 
 [project.optional-dependencies]
