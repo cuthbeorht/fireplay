@@ -18,8 +18,7 @@ def test_given_valid_mp3_expect_valid_header_contents(
         valid_sample_mp3: Path
 ):
     mp3_file = MediaProperties.from_file(valid_sample_mp3)
-
-    # assert mp3_file.file_name == '/Users/davidsciacchettano/src/personal/fireplay/test/fixtures/Weekend.mp3'
+    
     assert mp3_file.file_name == valid_sample_mp3.absolute().as_posix()
     assert mp3_file.format_name == 'mp3'
     assert mp3_file.codec_type == 'audio'
